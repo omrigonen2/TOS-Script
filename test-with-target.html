@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOS Modal - With Target Container</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .tos-container {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        #tosTargetContainer {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px solid #4CAF50;
+            background-color: #f0fff0;
+            border-radius: 5px;
+        }
+        .success-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #dff0d8;
+            border: 1px solid #d6e9c6;
+            color: #3c763d;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registration Form with Terms of Service</h1>
+    
+    <form id="registrationForm">
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="companyName">Company Name:</label>
+            <input type="text" id="companyName" name="companyName" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Business Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <input type="checkbox" id="tosCheckbox" name="tosCheckbox" required>
+            <label for="tosCheckbox">I agree to the Terms of Service</label>
+        </div>
+        
+        <div id="tosSourceContainer" class="tos-container">
+            <h2>Software License Agreement</h2>
+            <h3>1. Definitions</h3>
+            <p>"Software" means the computer program provided by the Licensor to the Licensee.</p>
+            <p>"Licensor" means the company providing the Software under this agreement.</p>
+            <p>"Licensee" means the individual or entity that is granted the right to use the Software.</p>
+            
+            <h3>2. License Grant</h3>
+            <p>Licensor hereby grants to Licensee a non-exclusive, non-transferable license to use the Software subject to the terms and conditions of this Agreement.</p>
+            <p>Licensee may:</p>
+            <ul>
+                <li>Install the Software on one computer for each license purchased.</li>
+                <li>Make one copy of the Software for backup purposes.</li>
+                <li>Use the Software for its intended purpose.</li>
+            </ul>
+            <p>Licensee may not:</p>
+            <ul>
+                <li>Copy or reproduce the Software except as expressly permitted.</li>
+                <li>Modify, adapt, or create derivative works based upon the Software.</li>
+                <li>Reverse engineer, decompile, disassemble, or otherwise attempt to derive source code from the Software.</li>
+                <li>Rent, lease, lend, sell, redistribute, sublicense or transfer the Software.</li>
+            </ul>
+            
+            <h3>3. Ownership</h3>
+            <p>The Software is owned and copyrighted by Licensor. Licensee's license confers no title or ownership in the Software and is not a sale of any rights in the Software.</p>
+            
+            <h3>4. Termination</h3>
+            <p>This license is effective until terminated. Licensee may terminate it at any time by destroying the Software together with all copies. This license will also terminate if Licensee fails to comply with any term or condition of this Agreement.</p>
+            
+            <h3>5. Disclaimer of Warranty</h3>
+            <p>THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</p>
+            
+            <h3>6. Limitation of Liability</h3>
+            <p>IN NO EVENT SHALL LICENSOR BE LIABLE FOR ANY DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE, EVEN IF LICENSOR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+            
+            <h3>7. Governing Law</h3>
+            <p>This Agreement shall be governed by the laws of the State of [STATE], without regard to conflicts of law provisions.</p>
+            
+            <p class="tos-end">This is the end of the Software License Agreement. By checking the box and clicking Approve in the modal, you acknowledge that you have read and agree to these terms and conditions.</p>
+        </div>
+        
+        <button type="submit" id="submitBtn">Register</button>
+    </form>
+    
+    <div id="tosTargetContainer">
+        <h2>Your Agreed Terms of Service</h2>
+        <div id="tosContent"></div>
+    </div>
+    
+    <div id="successMessage" class="success-message">
+        <h3>Registration Successful!</h3>
+        <p>Thank you for registering with us. Your account has been created successfully.</p>
+        <p>You can find a copy of the Terms of Service you agreed to below.</p>
+    </div>
+
+    <script src="tos-modal.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize TOS Modal
+            const tosModal = new TOSModal({
+                checkbox: document.getElementById('tosCheckbox'),
+                tosContainer: document.getElementById('tosSourceContainer'),
+                tosTargetContainer: document.getElementById('tosContent'),
+                clearOriginalTOS: true,
+                approveText: 'I have read and agree to the Software License Agreement'
+            });
+            
+            // Form submission handler
+            document.getElementById('registrationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (document.getElementById('tosCheckbox').checked) {
+                    // Show the target container and success message
+                    document.getElementById('tosTargetContainer').style.display = 'block';
+                    document.getElementById('successMessage').style.display = 'block';
+                    
+                    // Scroll to the success message
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Disable the form
+                    const formElements = document.getElementById('registrationForm').elements;
+                    for (let i = 0; i < formElements.length; i++) {
+                        formElements[i].disabled = true;
+                    }
+                } else {
+                    alert('You must agree to the Terms of Service to register.');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOS Modal - Disappear & Reappear Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .test-container {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .tos-container {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .highlight {
+            background-color: #ffffd0;
+            padding: 10px;
+            border-left: 3px solid #e6e600;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>TOS Modal - Disappear & Reappear Test</h1>
+    <p>This test demonstrates how the TOS content can be removed from the page after initialization and restored after approval.</p>
+    
+    <div class="test-container">
+        <h2>Test 1: Same Container for Source and Target</h2>
+        <p>In this test, the original TOS container is both the source and target for the content. It will be:</p>
+        <ol>
+            <li>Initially visible with TOS content</li>
+            <li>Cleared when the TOSModal is initialized</li>
+            <li>Restored with the original content after approval</li>
+        </ol>
+        
+        <div class="form-group">
+            <input type="checkbox" id="tosCheckbox1" name="tosCheckbox1" required>
+            <label for="tosCheckbox1">I agree to the Terms of Service</label>
+        </div>
+        
+        <div id="tosContainer1" class="tos-container">
+            <h3>Terms of Service</h3>
+            <p>This content will disappear when the page loads, and reappear in this same location after you approve the terms in the modal.</p>
+            <p>1. User Responsibilities: You are responsible for maintaining the confidentiality of your account information.</p>
+            <p>2. Content Guidelines: Users may not post illegal, harmful, or offensive content.</p>
+            <p>3. Service Availability: We strive to provide uninterrupted service but do not guarantee 100% availability.</p>
+            <p>4. Intellectual Property: All content on this platform remains the property of the respective owners.</p>
+            <p class="highlight">After you approve the terms in the modal, this content will reappear here.</p>
+        </div>
+    </div>
+    
+    <div class="test-container">
+        <h2>Test 2: Different Containers for Source and Target</h2>
+        <p>In this test, the original TOS content is in one container, and after approval, it will be placed in a different container:</p>
+        <ol>
+            <li>Original TOS content is in the source container</li>
+            <li>Source container is cleared when the TOSModal is initialized</li>
+            <li>Content is placed in a different target container after approval</li>
+        </ol>
+        
+        <div class="form-group">
+            <input type="checkbox" id="tosCheckbox2" name="tosCheckbox2" required>
+            <label for="tosCheckbox2">I agree to the Terms of Service</label>
+        </div>
+        
+        <div id="tosSource2" class="tos-container">
+            <h3>Original Terms of Service Location</h3>
+            <p>This content will disappear when the page loads, and will NOT reappear here. Instead, it will appear in the "Approved Terms" section below after approval.</p>
+            <p>1. You agree to use our services in compliance with all applicable laws.</p>
+            <p>2. You will not share your account credentials with any third party.</p>
+            <p>3. You acknowledge that violation of these terms may result in termination of your account.</p>
+            <p class="highlight">After approval, look for this content in the "Approved Terms" section below, not here.</p>
+        </div>
+        
+        <h3>Approved Terms</h3>
+        <p>This section will be empty until you approve the terms in the modal:</p>
+        <div id="tosTarget2" class="tos-container" style="border: 2px dashed #4CAF50; min-height: 100px;">
+            <p style="color: #999; text-align: center;">The approved Terms of Service will appear here after approval.</p>
+        </div>
+    </div>
+
+    <script src="tos-modal.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Test 1: Same Container for Source and Target
+            const tosModal1 = new TOSModal({
+                checkbox: document.getElementById('tosCheckbox1'),
+                tosContainer: document.getElementById('tosContainer1'),
+                tosTargetContainer: document.getElementById('tosContainer1'), // Same as source
+                clearOriginalTOS: true,
+                approveText: 'I have read and agree to the Terms of Service'
+            });
+            
+            // Test 2: Different Containers for Source and Target
+            const tosModal2 = new TOSModal({
+                checkbox: document.getElementById('tosCheckbox2'),
+                tosContainer: document.getElementById('tosSource2'),
+                tosTargetContainer: document.getElementById('tosTarget2'), // Different from source
+                clearOriginalTOS: true,
+                approveText: 'I have read and agree to the Terms of Service'
+            });
+        });
+    </script>
+</body>
+</html> 

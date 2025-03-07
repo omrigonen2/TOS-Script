@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOS Modal - Short Content Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .tos-container {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .test-container {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>TOSModal Content Length Tests</h1>
+    <p>This page demonstrates how the TOSModal handles different content lengths.</p>
+    
+    <div class="test-container">
+        <h2>Test 1: Very Short Content</h2>
+        <p>This test demonstrates that when content is very short and doesn't require scrolling, the checkbox is automatically enabled.</p>
+        
+        <div class="form-group">
+            <input type="checkbox" id="shortCheckbox" name="shortCheckbox" required>
+            <label for="shortCheckbox">I agree to the Terms of Service</label>
+        </div>
+        
+        <div id="shortContent" class="tos-container">
+            <h3>Brief Terms of Service</h3>
+            <p>These are very short terms of service that don't require scrolling to read.</p>
+            <p>You agree to use our service responsibly and in accordance with applicable laws.</p>
+        </div>
+    </div>
+    
+    <div class="test-container">
+        <h2>Test 2: Medium Content</h2>
+        <p>This test shows content that may or may not require scrolling depending on your screen size.</p>
+        
+        <div class="form-group">
+            <input type="checkbox" id="mediumCheckbox" name="mediumCheckbox" required>
+            <label for="mediumCheckbox">I agree to the Terms of Service</label>
+        </div>
+        
+        <div id="mediumContent" class="tos-container">
+            <h3>Medium-Length Terms of Service</h3>
+            <p>1. User Responsibilities: You are responsible for maintaining the confidentiality of your account information.</p>
+            <p>2. Content Guidelines: Users may not post illegal, harmful, or offensive content.</p>
+            <p>3. Service Availability: We strive to provide uninterrupted service but do not guarantee 100% availability.</p>
+            <p>4. Intellectual Property: All content on this platform remains the property of the respective owners.</p>
+            <p>5. Privacy: We collect and process data as described in our Privacy Policy.</p>
+            <p>6. Termination: We reserve the right to terminate accounts for violations of these terms.</p>
+            <p>7. Changes to Terms: These terms may be updated from time to time with notice to users.</p>
+        </div>
+    </div>
+    
+    <div class="test-container">
+        <h2>Test 3: Long Content with Scroll Required</h2>
+        <p>This test demonstrates the scroll indicator and manual checkbox enabling after scrolling to the bottom.</p>
+        
+        <div class="form-group">
+            <input type="checkbox" id="longCheckbox" name="longCheckbox" required>
+            <label for="longCheckbox">I agree to the Terms of Service</label>
+        </div>
+        
+        <div id="longContent" class="tos-container">
+            <h3>Comprehensive Terms of Service</h3>
+            <h4>1. Introduction</h4>
+            <p>Welcome to our service. These Terms of Service govern your use of our website, products, and services.</p>
+            
+            <h4>2. Definitions</h4>
+            <p>"Service" refers to the website and any associated services offered.</p>
+            <p>"User" refers to any individual accessing or using the Service.</p>
+            <p>"Content" refers to text, images, videos, or any other material posted on the Service.</p>
+            
+            <h4>3. Account Registration</h4>
+            <p>To access certain features, you may need to register for an account.</p>
+            <p>You are responsible for maintaining the confidentiality of your account credentials.</p>
+            <p>You must provide accurate and complete information when creating an account.</p>
+            <p>You are solely responsible for all activities that occur under your account.</p>
+            
+            <h4>4. User Conduct</h4>
+            <p>You agree not to use the Service for any illegal purposes.</p>
+            <p>You will not post content that is defamatory, obscene, or violates others' rights.</p>
+            <p>You will not attempt to gain unauthorized access to any part of the Service.</p>
+            <p>You will not use the Service to distribute malware or harmful code.</p>
+            <p>You will not interfere with or disrupt the Service or servers connected to the Service.</p>
+            
+            <h4>5. Intellectual Property</h4>
+            <p>The Service and its original content are and will remain the exclusive property of our company.</p>
+            <p>You retain ownership of any content you submit, but grant us a license to use, modify, and display it.</p>
+            <p>You may not reproduce, distribute, or create derivative works based on our content without permission.</p>
+            
+            <h4>6. Privacy Policy</h4>
+            <p>Our Privacy Policy describes how we collect, use, and protect your personal information.</p>
+            <p>By using the Service, you consent to our collection and use of data as described in the Privacy Policy.</p>
+            
+            <h4>7. Limitation of Liability</h4>
+            <p>The Service is provided "as is" without warranties of any kind.</p>
+            <p>We shall not be liable for any indirect, incidental, special, or consequential damages.</p>
+            <p>Our total liability for any claims shall not exceed the amount you paid for the Service.</p>
+            
+            <h4>8. Termination</h4>
+            <p>We may terminate or suspend your account at our sole discretion, without notice.</p>
+            <p>All provisions of these Terms shall survive termination, including ownership provisions.</p>
+            
+            <h4>9. Governing Law</h4>
+            <p>These Terms shall be governed by the laws of the relevant jurisdiction.</p>
+            <p>Any disputes shall be resolved in the courts of said jurisdiction.</p>
+            
+            <h4>10. Changes to Terms</h4>
+            <p>We reserve the right to modify these Terms at any time.</p>
+            <p>Continued use of the Service after changes constitutes acceptance of the new Terms.</p>
+            
+            <p>This is the end of the Terms of Service. Thank you for reading.</p>
+        </div>
+    </div>
+
+    <script src="tos-modal.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize TOS Modal for short content
+            const shortTosModal = new TOSModal({
+                checkbox: document.getElementById('shortCheckbox'),
+                tosContainer: document.getElementById('shortContent'),
+                clearOriginalTOS: false,
+                approveText: 'I have read and understand these brief terms'
+            });
+            
+            // Initialize TOS Modal for medium content
+            const mediumTosModal = new TOSModal({
+                checkbox: document.getElementById('mediumCheckbox'),
+                tosContainer: document.getElementById('mediumContent'),
+                clearOriginalTOS: false,
+                approveText: 'I have read and agree to these terms'
+            });
+            
+            // Initialize TOS Modal for long content
+            const longTosModal = new TOSModal({
+                checkbox: document.getElementById('longCheckbox'),
+                tosContainer: document.getElementById('longContent'),
+                clearOriginalTOS: false,
+                approveText: 'I have read and agree to all the terms and conditions'
+            });
+        });
+    </script>
+</body>
+</html> 

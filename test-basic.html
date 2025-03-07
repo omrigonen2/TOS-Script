@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOS Modal - Basic Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .tos-container {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sign Up Form</h1>
+    
+    <form id="signupForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        
+        <div class="form-group">
+            <input type="checkbox" id="tosCheckbox" name="tosCheckbox" required>
+            <label for="tosCheckbox">I agree to the Terms of Service</label>
+        </div>
+        
+        <div id="tosContent" class="tos-container">
+            <h2>Terms of Service</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget justo at urna commodo lacinia.</p>
+            <p>Praesent euismod, mauris in volutpat condimentum, nibh nunc fermentum est, vel ultricies nulla magna vel est.</p>
+            <p>Donec at massa vitae odio condimentum viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+            <p>Ut fermentum, augue at sagittis dignissim, dui turpis mattis mauris, vel tempus augue augue et libero.</p>
+            <p>Vestibulum tempor magna sit amet metus facilisis vestibulum. Praesent porttitor, neque sed egestas pulvinar, elit sapien posuere erat.</p>
+            <p>Aenean at tincidunt dui, quis consequat mauris. Morbi fringilla nunc vel mauris blandit, eget facilisis ex auctor.</p>
+            <p>Duis sagittis nisi eu diam sollicitudin, nec ultrices nunc molestie. Donec at massa vitae odio condimentum viverra.</p>
+            <p>Vivamus lobortis eros vel malesuada dignissim. Etiam accumsan lobortis massa, sed pulvinar metus placerat a.</p>
+            <p>Fusce aliquet nunc vitae metus ultrices, ac feugiat eros fermentum. Nam sagittis, est et tempus venenatis.</p>
+            <p>Praesent consequat lorem vel dui tincidunt semper. Donec efficitur mauris et vestibulum tempus.</p>
+            <p>Nullam aliquet tellus in leo pulvinar, et tempor quam molestie. Quisque id libero non est tempus scelerisque.</p>
+            <p>Sed ultricies libero ac magna auctor, non commodo urna dictum. Proin non lobortis libero, sed cursus mi.</p>
+            <p>Aliquam tempor, tortor at facilisis maximus, purus enim ultrices libero, non elementum ex sapien vel metus.</p>
+            <p>This is the end of the Terms of Service. By clicking the checkbox and the Approve button in the modal, you are confirming that you have read and agreed to these terms.</p>
+        </div>
+        
+        <button type="submit" id="submitBtn">Submit</button>
+    </form>
+
+    <script src="tos-modal.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize TOS Modal
+            const tosModal = new TOSModal({
+                checkbox: document.getElementById('tosCheckbox'),
+                tosContainer: document.getElementById('tosContent'),
+                clearOriginalTOS: true,
+                approveText: 'I confirm that I have read and agree to the Terms of Service'
+            });
+            
+            // Form submission handler
+            document.getElementById('signupForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (document.getElementById('tosCheckbox').checked) {
+                    alert('Form submitted successfully!');
+                } else {
+                    alert('You must agree to the Terms of Service to proceed.');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
