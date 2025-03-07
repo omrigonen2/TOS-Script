@@ -16,6 +16,16 @@ A JavaScript class that converts a standard Terms of Service checkbox into an in
 - Mobile-friendly design
 - Comprehensive error handling
 
+## Project Structure
+
+- `tos-modal.js` - The main JavaScript class implementation
+- `/tests` - Test files demonstrating various usage scenarios
+  - `test-basic.html` - Basic implementation with a simple form
+  - `test-with-target.html` - Implementation with a target container for TOS content
+  - `test-error-handling.html` - Demonstrates error handling and validation
+  - `test-short-content.html` - Shows behavior with different content lengths
+  - `test-disappear-reappear.html` - Demonstrates hiding and restoring TOS content
+
 ## Usage
 
 ### Basic Implementation
@@ -135,12 +145,10 @@ The TOSModal class works in all modern browsers:
 - Chrome, Firefox, Safari, Edge (latest versions)
 - Internet Explorer 11 (with appropriate polyfills)
 
-## Test Files
+## Running Tests
 
-This repository includes several test HTML files to demonstrate the functionality:
+To test the implementation:
 
-- `test-basic.html` - Basic implementation with a simple form
-- `test-with-target.html` - Implementation with a target container for TOS content
-- `test-error-handling.html` - Demonstrates error handling and validation
-- `test-short-content.html` - Shows behavior with different content lengths
-- `test-disappear-reappear.html` - Demonstrates hiding and restoring TOS content 
+1. Clone this repository
+2. Open any of the HTML files in the `/tests` directory in your browser
+3. Each test file demonstrates different features and scenarios 
